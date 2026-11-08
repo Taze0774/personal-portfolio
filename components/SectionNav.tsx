@@ -50,15 +50,21 @@ export default function SectionNav() {
               href={`#${item.id}`}
               aria-current={isActive ? "true" : undefined}
               aria-label={item.label}
-              title={item.label}
-              className={`flex size-10 shrink-0 items-center justify-center rounded-full transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:scale-105 ${
+              className={`group flex h-10 w-fit min-w-10 shrink-0 items-center justify-center gap-0 overflow-hidden rounded-full transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:gap-2 hover:px-3 focus-visible:gap-2 focus-visible:px-3 motion-safe:hover:scale-105 ${
                 isActive
-                  ? "bg-accent/15 text-accent shadow-[0_0_16px_rgba(59,130,246,0.2)]"
+                  ? "gap-2 bg-accent/15 px-3 text-accent shadow-[0_0_16px_rgba(59,130,246,0.2)]"
                   : "text-muted hover:bg-surface hover:text-fg"
               }`}
             >
               <Icon aria-hidden="true" className="size-5" />
-              <span className="sr-only">{item.label}</span>
+              <span
+                aria-hidden="true"
+                className={`max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium opacity-0 transition-[max-width,opacity] duration-500 ease-out group-hover:max-w-24 group-hover:opacity-100 group-focus-visible:max-w-24 group-focus-visible:opacity-100 ${
+                  isActive ? "max-w-24 opacity-100" : ""
+                }`}
+              >
+                {item.label}
+              </span>
             </a>
           );
         })}

@@ -11,7 +11,14 @@ import {
   SiPython,
   SiSupabase,
 } from "react-icons/si";
-import { Database } from "lucide-react";
+import {
+  Code2,
+  Database,
+  Layers,
+  Server,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
 import { TbBrandVscode } from "react-icons/tb";
 import Tilt from "@/components/Tilt";
 import { skillGroups, type SkillIconKey } from "@/data/skills";
@@ -31,10 +38,41 @@ const icons: Record<SkillIconKey, IconType> = {
   vscode: TbBrandVscode,
 };
 
+const categoryMeta: Record<
+  string,
+  {
+    icon: LucideIcon;
+    tagline: string;
+    colSpan: string;
+  }
+> = {
+  Languages: {
+    icon: Code2,
+    tagline: "Core programming & markup",
+    colSpan: "lg:col-span-7",
+  },
+  Frameworks: {
+    icon: Layers,
+    tagline: "Fullstack & web libraries",
+    colSpan: "lg:col-span-5",
+  },
+  "Backend & Data": {
+    icon: Server,
+    tagline: "Databases & cloud services",
+    colSpan: "lg:col-span-5",
+  },
+  Tools: {
+    icon: Wrench,
+    tagline: "IDEs & development environments",
+    colSpan: "lg:col-span-7",
+  },
+};
+
 export default function Skills() {
   return (
     <section id="skills" className="border-t border-line py-20 md:py-28">
       <div className="page-container max-w-6xl">
+        {/* Section Header */}
         <div className="mb-14 md:mb-16">
           <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
             <span aria-hidden="true" className="h-px w-8 bg-accent/60" />
@@ -45,44 +83,73 @@ export default function Skills() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group) => (
-            <Tilt
-              key={group.title}
-              maxTilt={4}
-              scale={1.015}
-              className="rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-accent/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
-            >
-              <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-fg">
-                {group.title}
-              </h3>
-              <ul className="mt-5 flex flex-wrap gap-2.5">
-                {group.skills.map((skill) => {
-                  const Icon = icons[skill.icon];
-                  return (
-                    <li key={skill.name}>
-                      <Tilt
-                        maxTilt={10}
-                        scale={1.05}
-                        className="inline-flex items-center gap-2 rounded-lg border border-line bg-canvas px-3 py-2 text-xs text-muted transition-colors hover:border-accent/60 hover:text-fg sm:text-sm"
-                      >
-                        <Icon
-                          aria-hidden="true"
-                          className="size-4 shrink-0 text-accent"
-                        />
-                        <span className="text-fg">{skill.name}</span>
-                        {skill.note && (
-                          <span className="text-[0.6875rem] text-muted">
-                            ({skill.note})
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-12">
+          {skillGroups.map((group) => {
+            const meta = categoryMeta[group.title] ?? {
+              icon: Code2,
+              tagline: "",
+              colSpan: "lg:col-span-6",
+            };
+            const CategoryIcon = meta.icon;
+
+            return (
+              <Tilt
+                key={group.title}
+                maxTilt={4}
+                scale={1.015}
+                className={`relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface p-6 sm:p-7 transition-colors hover:border-accent/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)] ${meta.colSpan}`}
+              >
+                {/* Ambient accent glow */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-accent/5 blur-3xl transition-opacity hover:opacity-100"
+                />
+
+                <div className="relative z-10">
+                  {/* Category Header */}
+                  <div className="flex items-center gap-3 border-b border-line pb-4">
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-line bg-canvas text-accent">
+                      <CategoryIcon aria-hidden="true" className="size-4" />
+                    </span>
+                    <div>
+                      <h3 className="font-heading text-base font-semibold tracking-tight text-fg sm:text-lg">
+                        {group.title}
+                      </h3>
+                      <p className="text-xs text-muted">{meta.tagline}</p>
+                    </div>
+                  </div>
+
+                  {/* Pills List - content-wrapping flex layout */}
+                  <div className="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
+                    {group.skills.map((skill) => {
+                      const Icon = icons[skill.icon];
+
+                      return (
+                        <div
+                          key={skill.name}
+                          className="group inline-flex min-h-11 items-center gap-2.5 rounded-full border border-line bg-canvas px-4 py-2 text-fg shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/60 hover:bg-surface hover:shadow-[0_0_16px_rgba(59,130,246,0.15)] sm:min-h-12 sm:px-5 sm:py-2.5"
+                        >
+                          <Icon
+                            aria-hidden="true"
+                            className="size-[18px] shrink-0 text-accent transition-transform duration-200 group-hover:scale-110 sm:size-5"
+                          />
+                          <span className="text-xs font-medium tracking-tight text-fg sm:text-sm">
+                            {skill.name}
                           </span>
-                        )}
-                      </Tilt>
-                    </li>
-                  );
-                })}
-              </ul>
-            </Tilt>
-          ))}
+                          {skill.note && (
+                            <span className="rounded-full bg-surface px-1.5 py-0.5 text-[9px] font-medium leading-none text-muted">
+                              {skill.note}
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </Tilt>
+            );
+          })}
         </div>
       </div>
     </section>

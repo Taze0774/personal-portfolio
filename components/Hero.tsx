@@ -50,19 +50,35 @@ export default function Hero() {
       <div className="page-container relative grid grid-cols-1 items-center gap-12 pb-32 pt-24 md:grid-cols-2 md:gap-16 md:py-24">
         {/* Profile photo – first on mobile, right on desktop */}
         <div className="order-first flex justify-center md:order-last md:justify-end">
-          <Tilt
-            maxTilt={8}
-            scale={1.03}
-            className="relative size-56 sm:size-72 lg:size-[26rem]"
-          >
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 rounded-full bg-accent/20 blur-3xl"
-            />
-            <div className="relative size-full overflow-hidden rounded-full border-4 border-line ring-1 ring-accent/40 transition-shadow hover:shadow-[0_0_45px_rgba(59,130,246,0.35)]">
-              <PortraitReveal />
+          <div className="relative">
+            {/* Pixelated Speech Bubble – positioned on the right side of the head */}
+            <div className="absolute top-2 -right-8 sm:top-6 sm:-right-16 md:top-8 md:-right-24 z-50 pointer-events-none select-none">
+              
+                <Image
+                  src="/hello-world-bubble.png"
+                  alt="<Hello World!/>"
+                  width={256}
+                  height={80}
+                  priority
+                  className="w-full h-auto [image-rendering:pixelated]"
+                />
+              
             </div>
-          </Tilt>
+
+            <Tilt
+              maxTilt={8}
+              scale={1.03}
+              className="relative size-56 sm:size-72 lg:size-[26rem]"
+            >
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 rounded-full bg-accent/20 blur-3xl"
+              />
+              <div className="relative size-full overflow-hidden rounded-full border-4 border-line ring-1 ring-accent/40 transition-shadow hover:shadow-[0_0_45px_rgba(59,130,246,0.35)]">
+                <PortraitReveal />
+              </div>
+            </Tilt>
+          </div>
         </div>
 
         {/* Name, bio, actions, socials */}
