@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="JP Alzate">
+  <rect width="64" height="64" rx="14" fill="#172033" />
+  <text
+    x="29"
+    y="42"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="28"
+    fill="#F8F9FC"
+  >JP</text>
+  <circle cx="46" cy="40" r="3" fill="#7C8FD1" />
+</svg>

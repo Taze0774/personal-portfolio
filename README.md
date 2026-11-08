@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JP Alzate — Personal Portfolio
 
-## Getting Started
+A minimalist, editorial-style developer portfolio built with Next.js, TypeScript, Tailwind CSS, Lucide React, and Framer Motion.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Production checks:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-## Learn More
+## Before publishing
 
-To learn more about Next.js, take a look at the following resources:
+A few places intentionally contain placeholders so no contact details or links are invented:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `data/site.ts` — email address and social profile URLs for site contact information.
+- `data/projects.ts` — project links and case study copy. Update `links.github` / `links.live` when repositories or deployments are public.
+- `components/ProfilePortrait.tsx` — replace the illustrated profile placeholder with a professional photograph. The about section has a fixed portrait frame ready for the final image.
+- `components/ProjectVisual.tsx` — replace the illustrative interface previews with real screenshots when available. The case study pages use the same component, so updating it updates both the cards and detail pages.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Social links in the contact section use the profile URLs configured in `data/site.ts`.
 
-## Deploy on Vercel
+## Routes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `/` — single-page portfolio (home, about, projects, skills, education, contact)
+- `/projects/amg-dental`
+- `/projects/ideal`
+- `/projects/event-management`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Structure
+
+- `app/` — App Router pages, metadata, global styles
+- `components/` — reusable sections and UI pieces
+- `data/` — site details and project case study content
+- `lib/` — shared styles
+
+## Deploy
+
+The project is ready for Vercel. Import the repository, keep the default Next.js build settings, and deploy.
