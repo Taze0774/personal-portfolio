@@ -55,7 +55,7 @@ export default function Hero() {
             <div className="absolute top-2 -right-8 sm:top-6 sm:-right-16 md:top-8 md:-right-24 z-50 pointer-events-none select-none">
               
                 <Image
-                  src="/hello-world-bubble.png"
+                  src="/image2.png"
                   alt="<Hello World!/>"
                   width={256}
                   height={80}

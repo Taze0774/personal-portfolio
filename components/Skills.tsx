@@ -98,12 +98,12 @@ export default function Skills() {
                 key={group.title}
                 maxTilt={4}
                 scale={1.015}
-                className={`relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface p-6 sm:p-7 transition-colors hover:border-accent/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)] ${meta.colSpan}`}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface p-6 sm:p-7 transition-colors hover:border-accent/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)] ${meta.colSpan}`}
               >
                 {/* Ambient accent glow */}
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-accent/5 blur-3xl transition-opacity hover:opacity-100"
+                  className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-accent/10 opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-100"
                 />
 
                 <div className="relative z-10">
@@ -121,18 +121,18 @@ export default function Skills() {
                   </div>
 
                   {/* Pills List - content-wrapping flex layout */}
-                  <div className="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
+                  <ul role="list" className="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
                     {group.skills.map((skill) => {
                       const Icon = icons[skill.icon];
 
                       return (
-                        <div
+                        <li
                           key={skill.name}
-                          className="group inline-flex min-h-11 items-center gap-2.5 rounded-full border border-line bg-canvas px-4 py-2 text-fg shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/60 hover:bg-surface hover:shadow-[0_0_16px_rgba(59,130,246,0.15)] sm:min-h-12 sm:px-5 sm:py-2.5"
+                          className="group/pill inline-flex min-h-11 items-center gap-2.5 rounded-full border border-line bg-canvas px-4 py-2 text-fg shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/60 hover:bg-surface hover:shadow-[0_0_16px_rgba(59,130,246,0.15)] sm:min-h-12 sm:px-5 sm:py-2.5"
                         >
                           <Icon
                             aria-hidden="true"
-                            className="size-[18px] shrink-0 text-accent transition-transform duration-200 group-hover:scale-110 sm:size-5"
+                            className="size-[18px] shrink-0 text-accent transition-transform duration-200 group-hover/pill:scale-110 sm:size-5"
                           />
                           <span className="text-xs font-medium tracking-tight text-fg sm:text-sm">
                             {skill.name}
@@ -142,10 +142,10 @@ export default function Skills() {
                               {skill.note}
                             </span>
                           )}
-                        </div>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
                 </div>
               </Tilt>
             );
