@@ -52,18 +52,17 @@ export default function Hero() {
         <div className="order-first flex justify-center md:order-last md:justify-end">
           <div className="relative">
             {/* Pixelated Speech Bubble – positioned on the right side of the head */}
-            <div className="absolute top-2 -right-8 sm:top-6 sm:-right-16 md:top-8 md:-right-24 z-50 pointer-events-none select-none">
-              
+            {/* Pixelated Speech Bubble */}
+              <div className="absolute z-50 pointer-events-none select-none top-2 left-1/2 -translate-x-1/2 sm:top-6 md:top-8">
                 <Image
                   src="/image2.png"
-                  alt="<Hello World!/>"
+                  alt="Hello World!"
                   width={256}
                   height={80}
                   priority
-                  className="w-full h-auto [image-rendering:pixelated]"
+                  className="w-64 h-auto [image-rendering:pixelated]"
                 />
-              
-            </div>
+              </div>
 
             <Tilt
               maxTilt={8}
