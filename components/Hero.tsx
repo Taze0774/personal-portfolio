@@ -55,7 +55,7 @@ export default function Hero() {
             {/* Pixelated Speech Bubble */}
               <div className="absolute z-50 pointer-events-none select-none top-2 left-1/2 -translate-x-1/2 sm:top-6 md:top-8">
                 <Image
-                  src="/image2.png"
+                  src="/image3.png"
                   alt="Hello World!"
                   width={256}
                   height={80}
