@@ -1,22 +1,26 @@
 import Image from "next/image";
 import { Award } from "lucide-react";
+import Reveal from "@/components/Reveal";
 import { achievements, type Achievement } from "@/data/achievements";
 
 function AchievementFrame({
   item,
   aspect,
   rotate,
+  delay,
 }: {
   item: Achievement;
   aspect: string;
   rotate: string;
+  delay: number;
 }) {
   return (
-    <figure
-      tabIndex={0}
-      aria-label={`${item.award}, ${item.title}, ${item.issuer}`}
-      className={`group relative mb-5 break-inside-avoid overflow-hidden rounded-xl border border-line bg-surface p-2 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 motion-reduce:transition-none ${rotate}`}
-    >
+    <Reveal delay={delay} className="mb-5 break-inside-avoid">
+      <figure
+        tabIndex={0}
+        aria-label={`${item.award}, ${item.title}, ${item.issuer}`}
+        className={`group relative overflow-hidden rounded-xl border border-line bg-surface p-2 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 motion-reduce:transition-none ${rotate}`}
+      >
       <div
         className={`relative overflow-hidden rounded-lg bg-gradient-to-br from-[#161B23] via-[#12161C] to-[#0A0C0F] ${aspect}`}
       >
@@ -48,6 +52,7 @@ function AchievementFrame({
         </div>
       </div>
     </figure>
+    </Reveal>
   );
 }
 
@@ -55,7 +60,7 @@ export default function Achievements() {
   return (
     <section id="achievements" className="border-t border-line py-20 md:py-28">
       <div className="page-container max-w-6xl">
-        <div className="mb-14 md:mb-16">
+        <Reveal className="mb-14 md:mb-16">
           <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
             <span aria-hidden="true" className="h-px w-8 bg-accent/60" />
             Achievements
@@ -63,18 +68,20 @@ export default function Achievements() {
           <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-fg sm:text-4xl md:text-5xl">
             Achievements &amp; certificates
           </h2>
-        </div>
+        </Reveal>
 
         <div className="columns-1 gap-5 sm:columns-2">
           <AchievementFrame
             item={achievements[0]}
             aspect="aspect-[4/3]"
             rotate="-rotate-1"
+            delay={0}
           />
           <AchievementFrame
             item={achievements[1]}
             aspect="aspect-[4/3]"
             rotate="rotate-1"
+            delay={90}
           />
         </div>
       </div>

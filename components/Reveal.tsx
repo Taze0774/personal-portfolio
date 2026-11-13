@@ -2,13 +2,29 @@
 
 import { useEffect, useRef, useState } from "react";
 
+type RevealVariant = "up" | "left" | "right" | "scale";
+
 type RevealProps = {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  variant?: RevealVariant;
 };
 
-export default function Reveal({ children, className, delay = 0 }: RevealProps) {
+const HIDDEN_STATES: Record<RevealVariant, string> = {
+  up: "motion-safe:translate-y-4 motion-safe:opacity-0",
+  left: "motion-safe:-translate-x-5 motion-safe:opacity-0",
+  right: "motion-safe:translate-x-5 motion-safe:opacity-0",
+  scale:
+    "motion-safe:translate-y-3 motion-safe:scale-[0.98] motion-safe:opacity-0",
+};
+
+export default function Reveal({
+  children,
+  className,
+  delay = 0,
+  variant = "up",
+}: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
 
@@ -36,8 +52,8 @@ export default function Reveal({ children, className, delay = 0 }: RevealProps) 
       style={{ transitionDelay: shown ? `${delay}ms` : undefined }}
       className={`transition-all duration-700 ease-out motion-reduce:transition-none ${
         shown
-          ? "translate-y-0 opacity-100"
-          : "motion-safe:translate-y-6 motion-safe:opacity-0"
+          ? "translate-x-0 translate-y-0 scale-100 opacity-100"
+          : HIDDEN_STATES[variant]
       } ${className ?? ""}`}
     >
       {children}

@@ -3,6 +3,7 @@ import {
   SiAndroidstudio,
   SiCss,
   SiDjango,
+  SiGit,
   SiHtml5,
   SiJavascript,
   SiNextdotjs,
@@ -20,6 +21,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { TbBrandVscode } from "react-icons/tb";
+import Reveal from "@/components/Reveal";
 import Tilt from "@/components/Tilt";
 import { skillGroups, type SkillIconKey } from "@/data/skills";
 
@@ -36,6 +38,7 @@ const icons: Record<SkillIconKey, IconType> = {
   supabase: SiSupabase,
   androidstudio: SiAndroidstudio,
   vscode: TbBrandVscode,
+  git: SiGit,
 };
 
 const categoryMeta: Record<
@@ -73,7 +76,7 @@ export default function Skills() {
     <section id="skills" className="border-t border-line py-20 md:py-28">
       <div className="page-container max-w-6xl">
         {/* Section Header */}
-        <div className="mb-14 md:mb-16">
+        <Reveal className="mb-14 md:mb-16">
           <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
             <span aria-hidden="true" className="h-px w-8 bg-accent/60" />
             Technical Skills
@@ -81,11 +84,11 @@ export default function Skills() {
           <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-fg sm:text-4xl md:text-5xl">
             Tools I work with
           </h2>
-        </div>
+        </Reveal>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-12">
-          {skillGroups.map((group) => {
+          {skillGroups.map((group, index) => {
             const meta = categoryMeta[group.title] ?? {
               icon: Code2,
               tagline: "",
@@ -94,12 +97,16 @@ export default function Skills() {
             const CategoryIcon = meta.icon;
 
             return (
-              <Tilt
+              <Reveal
                 key={group.title}
-                maxTilt={4}
-                scale={1.015}
-                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface p-6 sm:p-7 transition-colors hover:border-accent/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)] ${meta.colSpan}`}
+                delay={index * 70}
+                className={meta.colSpan}
               >
+                <Tilt
+                  maxTilt={4}
+                  scale={1.015}
+                  className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-line bg-surface p-6 sm:p-7 transition-colors hover:border-accent/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+                >
                 {/* Ambient accent glow */}
                 <div
                   aria-hidden="true"
@@ -128,7 +135,7 @@ export default function Skills() {
                       return (
                         <li
                           key={skill.name}
-                          className="group/pill inline-flex min-h-11 items-center gap-2.5 rounded-full border border-line bg-canvas px-4 py-2 text-fg shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/60 hover:bg-surface hover:shadow-[0_0_16px_rgba(59,130,246,0.15)] sm:min-h-12 sm:px-5 sm:py-2.5"
+                          className="group/pill inline-flex min-h-11 items-center gap-2.5 rounded-full border border-line bg-canvas px-4 py-2 text-fg shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/60 hover:bg-surface hover:shadow-[0_0_16px_rgba(225,29,72,0.15)] sm:min-h-12 sm:px-5 sm:py-2.5"
                         >
                           <Icon
                             aria-hidden="true"
@@ -147,7 +154,8 @@ export default function Skills() {
                     })}
                   </ul>
                 </div>
-              </Tilt>
+                </Tilt>
+              </Reveal>
             );
           })}
         </div>

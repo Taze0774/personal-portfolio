@@ -23,7 +23,7 @@ export default function NotFound() {
       <div className="mt-8">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent/90"
+          className="inline-flex items-center gap-2 rounded-none bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-canvas"
         >
           <ArrowLeft aria-hidden="true" className="size-4" />
           Back to home

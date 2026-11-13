@@ -3,7 +3,7 @@ export const site = {
   shortName: "Julian Paul",
   role: "Fourth-Year BS Information Technology Student",
   institution: "STI College Fairview",
-  bio: "I'm an aspiring software developer and IT student passionate about building practical digital solutions.",
+  bio: " An aspiring software developer and IT student passionate about building practical digital solutions.",
   email: "alzate.julianpaul.sitoy@gmail.com",
   resume: "/Resume.pdf",
   socials: {

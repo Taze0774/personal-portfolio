@@ -10,7 +10,8 @@ export type SkillIconKey =
   | "postgresql"
   | "supabase"
   | "androidstudio"
-  | "vscode";
+  | "vscode"
+  | "git";
 
 export type Skill = {
   name: string;
@@ -54,6 +55,7 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       { name: "Android Studio", icon: "androidstudio" },
       { name: "VS Code", icon: "vscode" },
+      { name: "Git", icon: "git" },
     ],
   },
 ];

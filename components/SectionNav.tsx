@@ -50,10 +50,10 @@ export default function SectionNav() {
               href={`#${item.id}`}
               aria-current={isActive ? "true" : undefined}
               aria-label={item.label}
-              className={`group flex h-10 w-fit min-w-10 shrink-0 items-center justify-center gap-0 overflow-hidden rounded-full transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:gap-2 hover:px-3 focus-visible:gap-2 focus-visible:px-3 motion-safe:hover:scale-105 ${
+              className={`group flex h-11 w-fit min-w-11 shrink-0 items-center justify-center gap-0 overflow-hidden transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:gap-2 hover:px-3 focus-visible:gap-2 focus-visible:px-3 motion-safe:hover:scale-105 sm:h-10 sm:min-w-10 ${
                 isActive
-                  ? "gap-2 bg-accent/15 px-3 text-accent shadow-[0_0_16px_rgba(59,130,246,0.2)]"
-                  : "text-muted hover:bg-surface hover:text-fg"
+                  ? "gap-2 rounded-none bg-accent/15 px-3 text-accent shadow-[0_0_16px_rgba(225,29,72,0.2)]"
+                  : "rounded-none text-muted hover:bg-white hover:text-canvas"
               }`}
             >
               <Icon aria-hidden="true" className="size-5" />

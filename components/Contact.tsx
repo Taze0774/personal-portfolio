@@ -5,6 +5,7 @@ import {
   InstagramIcon,
   LinkedInIcon,
 } from "@/components/BrandIcons";
+import Reveal from "@/components/Reveal";
 import { site } from "@/data/site";
 
 const socials = [
@@ -18,31 +19,41 @@ export default function Contact() {
   return (
     <section id="contact" className="border-t border-line py-20 md:py-28">
       <div className="page-container max-w-3xl text-center">
-        <p className="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-          <span aria-hidden="true" className="h-px w-8 bg-accent/60" />
-          Contact
-        </p>
+        <Reveal>
+          <p className="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+            <span aria-hidden="true" className="h-px w-8 bg-accent/60" />
+            Contact
+          </p>
 
-        <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-fg sm:text-4xl md:text-5xl">
-          Let&apos;s build something together.
-        </h2>
+          <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-fg sm:text-4xl md:text-5xl">
+            Let&apos;s build something together.
+          </h2>
+        </Reveal>
 
-        <div className="mt-6 flex justify-center">
+        <Reveal delay={80} className="mt-6 flex justify-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-xs font-medium text-muted">
             <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
             Open to OJT opportunities
           </span>
-        </div>
+        </Reveal>
 
-        <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-muted sm:text-base">
-          I&apos;m open to internships, software projects, and learning
-          environments where I can contribute. Feel free to reach out.
-        </p>
+        <Reveal
+          delay={120}
+          className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-muted sm:text-base"
+        >
+          <p>
+            I&apos;m open to internships, software projects, and learning
+            environments where I can contribute. Feel free to reach out.
+          </p>
+        </Reveal>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <Reveal
+          delay={160}
+          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+        >
           <a
             href={`mailto:${site.email}`}
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-[0_0_28px_rgba(59,130,246,0.45)]"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-none bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-canvas hover:shadow-[0_0_28px_rgba(225,29,72,0.45)] sm:w-auto"
           >
             <Mail aria-hidden="true" className="size-4" />
             Email Me
@@ -52,7 +63,7 @@ export default function Contact() {
             <a
               href={site.resume}
               download
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold text-fg transition-all hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-[0_0_24px_rgba(59,130,246,0.25)]"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-none border border-line bg-surface px-6 py-3 text-sm font-semibold text-fg transition-all hover:-translate-y-0.5 hover:border-accent/60 hover:bg-white hover:text-canvas hover:shadow-[0_0_24px_rgba(225,29,72,0.25)] sm:w-auto"
             >
               <Download aria-hidden="true" className="size-4" />
               Resume
@@ -60,15 +71,18 @@ export default function Contact() {
           ) : (
             <span
               aria-disabled="true"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold text-muted/60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-none border border-line bg-surface px-6 py-3 text-sm font-semibold text-muted/60 sm:w-auto"
             >
               <Download aria-hidden="true" className="size-4" />
               Resume (soon)
             </span>
           )}
-        </div>
+        </Reveal>
 
-        <div className="mt-8 flex items-center justify-center gap-3">
+        <Reveal
+          delay={200}
+          className="mt-8 flex items-center justify-center gap-3"
+        >
           {socials.map(({ label, href, Icon }) => (
             <a
               key={label}
@@ -77,14 +91,17 @@ export default function Contact() {
               href={href}
               target="_blank"
               rel="noreferrer"
-              className="flex size-11 items-center justify-center rounded-full border border-line bg-surface text-muted transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]"
+              className="flex size-[54px] items-center justify-center rounded-md border border-line bg-surface text-muted transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent hover:shadow-[0_0_20px_rgba(225,29,72,0.25)]"
             >
               <Icon className="size-5" />
             </a>
           ))}
-        </div>
+        </Reveal>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 text-xs text-muted sm:flex-row">
+        <Reveal
+          delay={240}
+          className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 text-xs text-muted sm:flex-row"
+        >
           <p>© 2026 {site.name}</p>
           <a
             href="#home"
@@ -93,7 +110,7 @@ export default function Contact() {
             Back to top
             <ArrowUp aria-hidden="true" className="size-3.5" />
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -5,28 +5,21 @@ import Projects from "@/components/Projects";
 import Achievements from "@/components/Achievements";
 import Contact from "@/components/Contact";
 import SectionNav from "@/components/SectionNav";
-import Reveal from "@/components/Reveal";
+import BackgroundDesign from "@/components/BackgroundDesign";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <SectionNav />
-      <Reveal>
+      <div className="relative isolate">
+        <BackgroundDesign />
+        <SectionNav />
         <About />
-      </Reveal>
-      <Reveal>
         <Skills />
-      </Reveal>
-      <Reveal>
         <Projects />
-      </Reveal>
-      <Reveal>
         <Achievements />
-      </Reveal>
-      <Reveal>
         <Contact />
-      </Reveal>
+      </div>
     </>
   );
 }

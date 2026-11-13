@@ -1,18 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Barlow, Oswald } from "next/font/google";
 import Intro from "@/components/Intro";
 import "./globals.css";
 
-const inter = Inter({
+const barlow = Barlow({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const oswald = Oswald({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["800", "900"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -41,6 +42,11 @@ export const metadata: Metadata = {
     title: "Julian Paul Alzate | Developer Portfolio",
     description: siteDescription,
   },
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -57,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${montserrat.variable} scroll-smooth`}
+      className={`${barlow.variable} ${oswald.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh bg-canvas text-fg font-sans antialiased">
